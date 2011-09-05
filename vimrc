@@ -2,7 +2,7 @@
 
 syntax on 
 
-set shortmess+=I " don't give the intro message when startgin Vim :intro
+set shortmess+=I " don't give the intro message when starting Vim
 set tabstop=2 shiftwidth=2 expandtab
 set textwidth=120
 set nowrap
@@ -14,6 +14,7 @@ set formatoptions=2croql
 set equalalways splitright
 set fillchars=vert:\ ,fold:\ 
 set whichwrap=<,>,h,l,[,]
+set mouse=a " enable the use of the mouse in the terminal
 
 set showmatch matchtime=3 " show the matched parenthesis for 0.3 seconds
 highlight MatchParen ctermbg=white
@@ -28,6 +29,7 @@ highlight LineNr ctermfg=grey guifg=grey
 
 set colorcolumn=+0
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+autocmd FileType nerdtree set colorcolumn=
 
 " automatically reload the vimrc if its modified
 autocmd BufWritePost .vimrc source %
@@ -44,6 +46,9 @@ nnoremap <A-Up>        :m-2<CR>  ==
 nnoremap <A-Down>      :m+ <CR>  ==
 vnoremap <A-Up>        :m  -2<CR>gv= gv
 vnoremap <A-Down>      :m'>+ <CR>gv= gv
+
+" http://stevelosh.com/blog/2010/09/coming-home-to-vim/#using-the-leader
+let mapleader=","
 
 map <F12> :set spell!<cr>
 
