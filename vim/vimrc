@@ -4,7 +4,6 @@ syntax on
 
 set shortmess+=I " don't give the intro message when starting Vim
 set tabstop=2 shiftwidth=2 expandtab
-set textwidth=120
 set nowrap
 set autoindent
 set autowrite
@@ -15,6 +14,11 @@ set equalalways splitright
 set fillchars=vert:\ ,fold:\ 
 set whichwrap=<,>,h,l,[,]
 set mouse=a " enable the use of the mouse in the terminal
+set pastetoggle=<F2>
+
+set textwidth=120
+autocmd FileType mail set textwidth=72
+autocmd BufRead .git/COMMIT_EDITMSG set textwidth=72
 
 set showmatch matchtime=3 " show the matched parenthesis for 0.3 seconds
 highlight MatchParen ctermbg=white

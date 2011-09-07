@@ -1,4 +1,4 @@
-[submodule "git-vim"]
+[submodule "vim/bundle/git-vim"]
 	path = vim/bundle/git-vim
 	url = https://github.com/motemen/git-vim.git
 [submodule "vim/bundle/gundo"]
