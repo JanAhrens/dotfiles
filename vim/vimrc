@@ -3,7 +3,7 @@
 syntax on 
 
 set shortmess+=I " don't give the intro message when starting Vim
-set tabstop=2 shiftwidth=2 expandtab
+set tabstop=2 shiftwidth=2
 set nowrap
 set autoindent
 set autowrite
@@ -15,6 +15,9 @@ set fillchars=vert:\ ,fold:\
 set whichwrap=<,>,h,l,[,]
 set mouse=a " enable the use of the mouse in the terminal
 set pastetoggle=<F2>
+
+set expandtab
+autocmd BufRead Makefile set noexpandtab
 
 set textwidth=120
 autocmd FileType mail set textwidth=72
@@ -75,3 +78,6 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
+
+" lesscss
+autocmd BufNewFile,BufRead *.less set filetype=less
