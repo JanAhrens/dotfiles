@@ -1,10 +1,10 @@
 " NOTE: for gvim settings see ~/.gvimrc
 
 syntax on 
+filetype plugin indent on
 
 set shortmess+=I " don't give the intro message when starting Vim
 set tabstop=2 shiftwidth=2
-set nowrap
 set autoindent
 set autowrite
 set hlsearch ignorecase
@@ -17,11 +17,11 @@ set mouse=a " enable the use of the mouse in the terminal
 set pastetoggle=<F2>
 
 set expandtab
-autocmd BufRead Makefile set noexpandtab
+autocmd BufRead,BufNewFile Makefile setlocal noexpandtab
 
 set textwidth=120
-autocmd FileType mail set textwidth=72
-autocmd BufRead .git/COMMIT_EDITMSG set textwidth=72
+autocmd FileType mail setlocal textwidth=72
+autocmd BufRead .git/COMMIT_EDITMSG setlocal textwidth=72
 
 set showmatch matchtime=3 " show the matched parenthesis for 0.3 seconds
 highlight MatchParen ctermbg=white
@@ -63,7 +63,7 @@ map <F12> :set spell!<cr>
 " plugins
 
 " Pathogen
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 " NerdTree
 let NERDTreeIgnore=['\.class$', '\~$', '\.bak$']
