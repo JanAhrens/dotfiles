@@ -1,21 +1,81 @@
-" NOTE: for gvim settings see ~/.gvimrc
+" NOTE: for GUI settings see .gvimrc
+
+" Use the IMprovements
+set nocompatible
 
 syntax on 
 filetype plugin indent on
 
-set shortmess+=I " don't give the intro message when starting Vim
-set tabstop=2 shiftwidth=2
+" don't give the intro message when starting Vim :intro
+set shortmess+=I
+
+" Number of spaces that a <Tab> in the file counts for
+set tabstop=2
+
+" Number of spaces to use for each step of (auto)indent
+set shiftwidth=2
+
+" Lines will not  wrap and only part of long lines will be
+" displayed. When the cursor is moved to a part that is not
+" show, the screen will scroll horizontally
+set nowrap
+
+" Copy indent from current line wehn starting a new line
 set autoindent
+
+" Write the contents of the file, if it has been modified
 set autowrite
-set hlsearch ignorecase
+
+" When there is a previous search pattern, highlight all its
+" matches
+set hlsearch
+
+" Ignore the case of normal letters in patterns
+set ignorecase
+
+" Override the 'ignorecase' option if the search pattern
+" contains upper case characters
+set smartcase
+
+" Show the line and column number of the cursor position
 set ruler
-set formatoptions=2croql
-set equalalways splitright
+
+" Automatically insert the current comment leader after
+" hitting 'o' or 'O' in Normal mode.
+set formatoptions+=r
+
+" Automatically insert the current comment leader after
+" hitting <Enter> in Insert mode
+set formatoptions+=o
+
+" When formatting text, use the indent of the second line of
+" a paragraph for the rest of the paragraph, instead of the
+" indent of the first line
+set formatoptions+=2
+
+" All the windows are automatically made the same size after
+" splitting or closing a window
+set equalalways
+
+" Splitting a window will put the new window right of the
+" current one
+set splitright
+
+" Characters to fill the statusline and vertical seperators
 set fillchars=vert:\ ,fold:\ 
-set whichwrap=<,>,h,l,[,]
-set mouse=a " enable the use of the mouse in the terminal
+
+" Wrap when using <Left> and <Right> in Normal, Visual,
+" Insert and Replace 
+set whichwrap=b,s,<,>,[,]
+
+" enable the use of the mouse in terminals
+set mouse=a
+
+" define the key that toogle the paste insert mode
 set pastetoggle=<F2>
 
+" In Insert mode: Use the appropriate number of spaces to
+" insert a <Tab>
 set expandtab
 autocmd BufRead,BufNewFile Makefile setlocal noexpandtab
 
@@ -23,7 +83,8 @@ set textwidth=120
 autocmd FileType mail setlocal textwidth=72
 autocmd BufRead .git/COMMIT_EDITMSG setlocal textwidth=72
 
-set showmatch matchtime=3 " show the matched parenthesis for 0.3 seconds
+" show the matched parenthesis for 0.3 seconds
+set showmatch matchtime=3
 highlight MatchParen ctermbg=white
 
 " Folding
@@ -37,9 +98,6 @@ highlight LineNr ctermfg=grey guifg=grey
 set colorcolumn=+0
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 autocmd FileType nerdtree set colorcolumn=
-
-" automatically reload the vimrc if its modified
-autocmd BufWritePost .vimrc source %
 
 " ,,Learning, the hard way''
 " http://cloudhead.io/2010/04/24/staying-the-hell-out-of-insert-mode/
@@ -60,7 +118,8 @@ let mapleader=","
 map <F12> :set spell!<cr>
 
 " ----------------------------------------------------------
-" plugins
+" Plugins
+" -------
 
 " Pathogen
 call pathogen#infect()
@@ -81,3 +140,8 @@ let g:miniBufExplModSelTarget = 1
 
 " lesscss
 autocmd BufNewFile,BufRead *.less set filetype=less
+
+" RVM Integration (rvm.vim)
+set statusline+=%{rvm#statusline()}
+
+" ----------------------------------------------------------
