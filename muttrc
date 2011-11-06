@@ -1,0 +1,23 @@
+ignore *
+unignore from: subject to cc date x-mailer x-url user-agent
+hdr_order date from to cc subject
+
+set sort = reverse-mailbox-order
+set edit_headers = yes
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+set imap_check_subscribed
+set imap_idle = yes
+
+# Don't indicate which version of mutt was used
+set user_agent = no
+
+set editor=vim
+
+set header_cache=~/.mutt/headercache
+
+set alias_file=~/.mutt/aliases
+source ~/.mutt/aliases
+
+source ~/.mutt/accounts
