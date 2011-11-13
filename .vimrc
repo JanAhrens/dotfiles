@@ -88,7 +88,7 @@ set showmatch matchtime=3
 highlight MatchParen ctermbg=white
 
 " Folding
-set foldcolumn=1
+set foldcolumn=0
 set foldmethod=manual
 hi FoldColumn guifg=#333 guibg=#FFF
 
@@ -98,6 +98,7 @@ highlight LineNr ctermfg=grey guifg=grey
 set colorcolumn=+0
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 autocmd FileType nerdtree set colorcolumn=
+autocmd FileType qf set colorcolumn=
 
 " ,,Learning, the hard way''
 " http://cloudhead.io/2010/04/24/staying-the-hell-out-of-insert-mode/
@@ -116,6 +117,9 @@ vnoremap <A-Down>      :m'>+ <CR>gv= gv
 let mapleader=","
 
 map <F12> :set spell!<cr>
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " ----------------------------------------------------------
 " Plugins
@@ -140,8 +144,12 @@ let g:miniBufExplModSelTarget = 1
 
 " lesscss
 autocmd BufNewFile,BufRead *.less set filetype=less
+      
+" tmru
+noremap <c-r> :TRecentlyUsedFiles<cr> 
 
-" RVM Integration (rvm.vim)
-set statusline+=%{rvm#statusline()}
-
+" ack
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 " ----------------------------------------------------------
+
+source ~/.vimrc.local

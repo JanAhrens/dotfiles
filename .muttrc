@@ -2,7 +2,7 @@ ignore *
 unignore from: subject to cc date x-mailer x-url user-agent
 hdr_order date from to cc subject
 
-set sort = reverse-mailbox-order
+set sort = threads
 set edit_headers = yes
 
 set ssl_starttls = yes
@@ -18,6 +18,12 @@ set editor=vim
 set header_cache=~/.mutt/headercache
 
 set alias_file=~/.mutt/aliases
+
+alternative_order text/enriched text/plain text application/postscript image/*
+auto_view text/html
+
 source ~/.mutt/aliases
 
 source ~/.mutt/accounts
+
+source ~/.mutt/mutt-colors-solarized-light-16.muttrc
