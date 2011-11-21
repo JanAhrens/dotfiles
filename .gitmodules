@@ -1,30 +1,30 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim/bundle/git-vim"]
-	path = vim/bundle/git-vim
+[submodule ".vim/bundle/git-vim"]
+	path = .vim/bundle/git-vim
 	url = https://github.com/motemen/git-vim.git
-[submodule "vim/bundle/gundo"]
-	path = vim/bundle/gundo
+[submodule ".vim/bundle/gundo"]
+	path = .vim/bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
-[submodule "vim/bundle/vim-coffee-script"]
-	path = vim/bundle/vim-coffee-script
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "vim/bundle/vim-rvm"]
-	path = vim/bundle/vim-rvm
+[submodule ".vim/bundle/vim-rvm"]
+	path = .vim/bundle/vim-rvm
 	url = git://github.com/tpope/vim-rvm.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/vim-rails"]
-	path = vim/bundle/vim-rails
+[submodule ".vim/bundle/vim-rails"]
+	path = .vim/bundle/vim-rails
 	url = git://github.com/tpope/vim-rails.git
-[submodule "vim/bundle/tmru_vim"]
-	path = vim/bundle/tmru_vim
+[submodule ".vim/bundle/tmru_vim"]
+	path = .vim/bundle/tmru_vim
 	url = https://github.com/tomtom/tmru_vim.git
-[submodule "vim/bundle/ack"]
-	path = vim/bundle/ack
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "vim/bundle/tlib_vim"]
-	path = vim/bundle/tlib_vim
+[submodule ".vim/bundle/tlib_vim"]
+	path = .vim/bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
