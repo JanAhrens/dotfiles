@@ -99,6 +99,20 @@ set colorcolumn=+0
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 autocmd FileType nerdtree set colorcolumn=
 autocmd FileType qf set colorcolumn=
+autocmd FileType help set colorcolumn=
+
+let s:color_column_old = +0
+function! s:ToggleColorColumn()
+    if s:color_column_old == ''
+        let s:color_column_old = &colorcolumn
+        windo let &colorcolumn = +0
+    else
+        windo let &colorcolumn=s:color_column_old
+        let s:color_column_old = +0
+    endif
+endfunction
+
+map <F3> :call <SID>ToggleColorColumn()<cr>
 
 " ,,Learning, the hard way''
 " http://cloudhead.io/2010/04/24/staying-the-hell-out-of-insert-mode/
