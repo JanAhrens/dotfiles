@@ -150,6 +150,7 @@ noremap <c-r> :TRecentlyUsedFiles<cr>
 
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+map <leader>a :Ack<space>
 " ----------------------------------------------------------
 
 source ~/.vimrc.local
