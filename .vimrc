@@ -3,8 +3,10 @@
 " Use the IMprovements
 set nocompatible
 
+call pathogen#infect()
 syntax on 
 filetype plugin indent on
+:Helptags
 
 " don't give the intro message when starting Vim :intro
 set shortmess+=I
@@ -139,9 +141,6 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " Plugins
 " -------
 
-" Pathogen
-call pathogen#infect()
-
 " NerdTree
 let NERDTreeIgnore=['\.class$', '\~$', '\.bak$']
 nmap <silent> <c-t> :NERDTreeToggle<cr>
@@ -164,7 +163,10 @@ noremap <c-r> :TRecentlyUsedFiles<cr>
 
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-map <leader>a :Ack<space>
+map <leader>a :NERDTreeClose<cr>:Ack<space>
+
+" fugetive
+set statusline="%{fugitive#statusline()}"
 " ----------------------------------------------------------
 
 source ~/.vimrc.local
