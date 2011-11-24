@@ -32,3 +32,6 @@ source $ZSH/oh-my-zsh.sh
 
 # http://www.faqs.org/faqs/unix-faq/shell/zsh/#3.18
 setopt nohup
+
+# who needs a clock? keep on smiling! ;-)
+export RPROMPT=":-)"
