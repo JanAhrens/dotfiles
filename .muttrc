@@ -22,6 +22,13 @@ set alias_file=~/.mutt/aliases
 alternative_order text/enriched text/plain text application/postscript image/*
 auto_view text/html
 
+# Cancel a message when subject is blank
+set abort_nosubject=yes
+
+# Vim like keybinds
+bind pager j next-line
+bind pager k previous-line
+
 source ~/.mutt/aliases
 
 source ~/.mutt/accounts
