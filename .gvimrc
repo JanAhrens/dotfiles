@@ -1,10 +1,8 @@
-" disable toolbar
-set guioptions-=T
+set background=dark
+colorscheme solarized
 
-" disable scrollbar
+set guioptions-=T
 set guioptions-=r
+set guioptions-=R
 set guioptions-=l
 set guioptions-=L
-
-" Custom menus
-menu Edit.Big\ Changes.Delete\ All\ Spaces :%s/[ ^I]//g<CR>
