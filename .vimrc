@@ -98,7 +98,7 @@ set number
 highlight LineNr ctermfg=grey guifg=grey
 
 set colorcolumn=+0
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+highlight ColorColumn ctermbg=grey guibg=lightgrey
 autocmd FileType nerdtree set colorcolumn=
 autocmd FileType qf set colorcolumn=
 autocmd FileType help set colorcolumn=
