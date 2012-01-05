@@ -6,7 +6,6 @@ set nocompatible
 call pathogen#infect()
 syntax on 
 filetype plugin indent on
-:Helptags
 
 " don't give the intro message when starting Vim :intro
 set shortmess+=I
@@ -137,6 +136,10 @@ map <F12> :set spell!<cr>
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+" Indicates a fast terminal connection. More characters will be sent to the
+" screen for redrawing, instead of using insert/delete line commands.
+set ttyfast
+
 " ----------------------------------------------------------
 " Plugins
 " -------
@@ -144,7 +147,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " NerdTree
 let NERDTreeIgnore=['\.class$', '\~$', '\.bak$']
 nmap <silent> <c-t> :NERDTreeToggle<cr>
-inoremap <c-t> <esc>:NERDTreeClose<cr>a
+let NERDTreeChDirMode=2
 
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
