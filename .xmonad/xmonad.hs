@@ -2,6 +2,8 @@ import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
+import XMonad.Util.EZConfig(additionalKeysP)
+import XMonad.Actions.Volume
 
 main = do
   xmonad $ defaultConfig {
@@ -25,4 +27,6 @@ main = do
 
     -- use the ,,windows key'' as mod key
     , modMask    = mod4Mask
-  }
+  } `additionalKeysP` [ ("<XF86AudioMute>", toggleMute >> return()),
+    ("<XF86AudioLowerVolume>",  lowerVolume 4 >> return()),
+    ("<XF86AudioRaiseVolume>",  raiseVolume 4 >> return())]
