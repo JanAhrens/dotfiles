@@ -8,21 +8,20 @@ main = do
       manageHook =
             manageDocks
 
-        -- fix fullscreen layout for videos etc.
+        -- fix full screen layout for videos etc.
         <+> composeAll [isFullscreen --> doFullFloat]
 
         -- use default manageHook
         <+> manageHook defaultConfig
 
     , layoutHook =
-            avoidStruts
+          avoidStruts
 
-          -- automatically remove borders from fullscreen
-          -- layouts
-          $ smartBorders
+        -- automatically remove borders from full screen layouts
+        $ smartBorders
 
-          -- use default layoutHook
-          $ layoutHook defaultConfig
+        -- use default layoutHook
+        $ layoutHook defaultConfig
 
     -- use the ,,windows key'' as mod key
     , modMask    = mod4Mask
