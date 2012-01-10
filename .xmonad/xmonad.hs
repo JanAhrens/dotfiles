@@ -1,7 +1,6 @@
 import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig(additionalKeysP)
@@ -44,6 +43,7 @@ main = do
                     , ppCurrent = xmobarColor "#cdcd57" ""
                     , ppSep = " <fc=#3d3d07>|</fc> "
                     }
-  } `additionalKeysP` [ ("<XF86AudioMute>", toggleMute >> return()),
-    ("<XF86AudioLowerVolume>",  lowerVolume 4 >> return()),
-    ("<XF86AudioRaiseVolume>",  raiseVolume 4 >> return())]
+  } `additionalKeysP` [ ("<XF86AudioMute>",         toggleMute    >> return())
+                      , ("<XF86AudioLowerVolume>",  lowerVolume 4 >> return())
+                      , ("<XF86AudioRaiseVolume>",  raiseVolume 4 >> return())
+                      ]
