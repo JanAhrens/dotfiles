@@ -1,0 +1,13 @@
+Config { font = "xft:Terminus-11"
+       , bgColor = "#1C1C0E"
+       , fgColor = "#7D7D37"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ Run Battery [] 30
+                    , Run StdinReader
+                    , Run Date "%a %b %d %k:%M" "date" 100
+                    ]
+       , sepChar = "'"
+       , alignSep = "}{"
+       , template = "'StdinReader' <fc=#3d3d07>|</fc> 'hostname' }{ <fc=#3d3d07>|</fc> 'battery' <fc=#3d3d07>|</fc> 'date'"
+       }
