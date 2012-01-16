@@ -2,12 +2,36 @@ import XMonad
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
-import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig(additionalKeysP)
-import XMonad.Actions.Volume
 import XMonad.Util.Run(spawnPipe)
 
+import XMonad.Actions.Volume
+import XMonad.Actions.CycleWS (nextWS,prevWS,toggleWS,shiftToNext,shiftToPrev)
+
+import XMonad.Layout.Spacing
+import XMonad.Layout.NoBorders
+import XMonad.Layout.Grid
+import XMonad.Layout.Named
+import XMonad.Layout.Tabbed
+import XMonad.Layout.PerWorkspace (onWorkspace)
+
 import System.IO(hPutStrLn)
+
+myWorkspaces = ["1:main", "2:web", "3:talk"]
+
+myLayoutHook =  workspaceConf $ lessBorders OnlyFloat $ grid ||| tall ||| full
+  where myNamed n = named n . spacing 6 . avoidStruts
+        grid   = myNamed "grid" Grid
+        tall   = myNamed "tall" $ Tall 1 (3/100) (1/2)
+        full   = myNamed "full" Full
+        workspaceConf = onWorkspace (myWorkspaces !! 2) (noBorders Full)
+
+myKeys = [ ("M-<Left>",    prevWS)
+         , ("M-<Right>",   nextWS)
+         , ("<XF86AudioMute>",         toggleMute    >> return())
+         , ("<XF86AudioLowerVolume>",  lowerVolume 4 >> return())
+         , ("<XF86AudioRaiseVolume>",  raiseVolume 4 >> return())
+         ]
 
 main = do
   xmproc <- spawnPipe "xmobar"
@@ -15,8 +39,12 @@ main = do
       terminal = "konsole"
 
     , borderWidth        = 3
-    , normalBorderColor  = "#1E1C10"
-    , focusedBorderColor = "#5D0017"
+    , normalBorderColor  = "#073642"
+    , focusedBorderColor = "#dc322f"
+
+    , workspaces = myWorkspaces
+
+    , focusFollowsMouse = True
 
     , manageHook =
             manageDocks
@@ -27,13 +55,7 @@ main = do
         -- use default manageHook
         <+> manageHook defaultConfig
 
-    , layoutHook =
-
-        -- automatically remove borders from full screen layouts
-          smartBorders
-
-        -- use default layoutHook
-        $ avoidStruts (layoutHook defaultConfig) ||| Full
+    , layoutHook = myLayoutHook
 
     -- use the ,,windows key'' as mod key
     , modMask    = mod4Mask
@@ -43,7 +65,4 @@ main = do
                     , ppCurrent = xmobarColor "#cdcd57" ""
                     , ppSep = " <fc=#3d3d07>|</fc> "
                     }
-  } `additionalKeysP` [ ("<XF86AudioMute>",         toggleMute    >> return())
-                      , ("<XF86AudioLowerVolume>",  lowerVolume 4 >> return())
-                      , ("<XF86AudioRaiseVolume>",  raiseVolume 4 >> return())
-                      ]
+  } `additionalKeysP` myKeys
