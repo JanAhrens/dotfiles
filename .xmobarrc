@@ -1,7 +1,7 @@
 Config { font = "xft:Terminus-11"
-       , bgColor = "#1C1C0E"
-       , fgColor = "#7D7D37"
        , position = TopW L 85
+       , bgColor = "#002b36"
+       , fgColor = "#657b83"
        , lowerOnStart = True
        , commands = [ Run Battery [] 30
                     , Run StdinReader
@@ -9,5 +9,5 @@ Config { font = "xft:Terminus-11"
                     ]
        , sepChar = "'"
        , alignSep = "}{"
-       , template = "'StdinReader' <fc=#3d3d07>|</fc> 'hostname' }{ <fc=#3d3d07>|</fc> 'battery' <fc=#3d3d07>|</fc> 'date'"
+       , template = "'StdinReader' }{ 'date'"
        }
