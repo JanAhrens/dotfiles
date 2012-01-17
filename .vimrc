@@ -7,6 +7,8 @@ call pathogen#infect()
 syntax on 
 filetype plugin indent on
 
+colorscheme solarized
+
 " don't give the intro message when starting Vim :intro
 set shortmess+=I
 
@@ -101,6 +103,7 @@ highlight ColorColumn ctermbg=grey guibg=lightgrey
 autocmd FileType nerdtree set colorcolumn=
 autocmd FileType qf set colorcolumn=
 autocmd FileType help set colorcolumn=
+autocmd FileType tlibInputList set colorcolumn=
 
 let s:color_column_old = +0
 function! s:ToggleColorColumn()
