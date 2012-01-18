@@ -17,17 +17,18 @@ import XMonad.Layout.PerWorkspace (onWorkspace)
 
 import System.IO(hPutStrLn)
 
-myWorkspaces = ["1:main", "2:web", "3:talk"]
+myWorkspaces = ["1:main", "2:web", "3:talk", "4:virtual"]
 
 myLayoutHook =  workspaceConf $ lessBorders OnlyFloat $ grid ||| tall ||| full
   where myNamed n = named n . spacing 6 . avoidStruts
         grid   = myNamed "grid" Grid
         tall   = myNamed "tall" $ Tall 1 (3/100) (1/2)
         full   = myNamed "full" Full
-        workspaceConf = onWorkspace (myWorkspaces !! 2) (noBorders Full)
+        workspaceConf = onWorkspace (myWorkspaces !! 0) (noBorders Full)
 
 myKeys = [ ("M-<Left>",    prevWS)
          , ("M-<Right>",   nextWS)
+         , ("M-S-l", spawn "gnome-screensaver-command --lock")
          , ("<XF86AudioMute>",         toggleMute    >> return())
          , ("<XF86AudioLowerVolume>",  lowerVolume 4 >> return())
          , ("<XF86AudioRaiseVolume>",  raiseVolume 4 >> return())
