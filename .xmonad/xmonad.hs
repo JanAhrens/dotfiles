@@ -26,18 +26,18 @@ myLayoutHook =  workspaceConf $ lessBorders OnlyFloat $ grid ||| tall ||| full
         full   = myNamed "full" Full
         workspaceConf = onWorkspace (myWorkspaces !! 0) (noBorders Full)
 
-myKeys = [ ("M-<Left>",    prevWS)
-         , ("M-<Right>",   nextWS)
-         , ("M-S-l", spawn "gnome-screensaver-command --lock")
-         , ("<XF86AudioMute>",         toggleMute    >> return())
-         , ("<XF86AudioLowerVolume>",  lowerVolume 4 >> return())
-         , ("<XF86AudioRaiseVolume>",  raiseVolume 4 >> return())
+myKeys = [ ("M-<Left>",  prevWS)
+         , ("M-<Right>", nextWS)
+         , ("C-S-l", spawn "gnome-screensaver-command --lock")
+         , ("<XF86AudioMute>",        toggleMute    >> return())
+         , ("<XF86AudioLowerVolume>", lowerVolume 4 >> return())
+         , ("<XF86AudioRaiseVolume>", raiseVolume 4 >> return())
          ]
 
 main = do
   xmproc <- spawnPipe "xmobar"
   xmonad $ defaultConfig {
-      terminal = "konsole"
+      terminal = "urxvt"
 
     , borderWidth        = 3
     , normalBorderColor  = "#073642"
