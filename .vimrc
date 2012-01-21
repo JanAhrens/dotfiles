@@ -4,7 +4,7 @@
 set nocompatible
 
 call pathogen#infect()
-syntax on 
+syntax on
 filetype plugin indent on
 
 colorscheme solarized
@@ -69,7 +69,7 @@ set fillchars=vert:\ ,fold:\
 
 " Wrap when using <Left> and <Right> in Normal, Visual,
 " Insert and Replace 
-set whichwrap=b,s,<,>,[,]
+set whichwrap=b,s,[,]
 
 " enable the use of the mouse in terminals
 set mouse=a
@@ -117,13 +117,6 @@ function! s:ToggleColorColumn()
 endfunction
 
 map <F3> :call <SID>ToggleColorColumn()<cr>
-
-" ,,Learning, the hard way''
-" http://cloudhead.io/2010/04/24/staying-the-hell-out-of-insert-mode/
-inoremap <Left>  <NOP>
-inoremap <Right> <NOP>
-inoremap <Up>    <NOP>
-inoremap <Down>  <NOP>
 
 " Move a line up with Alt-Up and move it down with Alt-Down
 nnoremap <A-Up>        :m-2<CR>  ==
