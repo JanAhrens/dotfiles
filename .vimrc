@@ -98,7 +98,7 @@ hi FoldColumn guifg=#333 guibg=#FFF
 set number
 highlight LineNr ctermfg=grey guifg=grey
 
-set colorcolumn=+0
+"set colorcolumn=+0
 highlight ColorColumn ctermbg=grey guibg=lightgrey
 autocmd FileType nerdtree set colorcolumn=
 autocmd FileType qf set colorcolumn=
@@ -173,6 +173,9 @@ map <leader>a :NERDTreeClose<cr>:Ack<space>
 
 " fugetive
 set statusline="%{fugitive#statusline()}"
+
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 " ----------------------------------------------------------
 
 source ~/.vimrc.local
