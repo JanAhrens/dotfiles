@@ -1,0 +1,8 @@
+[user]
+	name = Jan Ahrens
+	email = jan.ahrens+git@googlemail.com
+[alias]
+	st = status
+	co = checkout
+  cp = cherry-pick
+  br = branch -v
