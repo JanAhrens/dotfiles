@@ -98,7 +98,7 @@ hi FoldColumn guifg=#333 guibg=#FFF
 set number
 highlight LineNr ctermfg=grey guifg=grey
 
-"set colorcolumn=+0
+set colorcolumn=
 highlight ColorColumn ctermbg=grey guibg=lightgrey
 autocmd FileType nerdtree set colorcolumn=
 autocmd FileType qf set colorcolumn=
@@ -143,6 +143,7 @@ set ttyfast
 " NerdTree
 let NERDTreeIgnore=['\.class$', '\~$', '\.bak$']
 nmap <silent> <c-t> :NERDTreeToggle<cr>
+nmap <silent> <c-f> :NERDTreeFind<cr>
 let NERDTreeChDirMode=2
 
 " Gundo
