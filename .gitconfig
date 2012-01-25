@@ -1,8 +1,28 @@
 [user]
-	name = Jan Ahrens
-	email = jan.ahrens+git@googlemail.com
+  name = Jan Ahrens
+  email = jan.ahrens+git@googlemail.com
+
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+
 [alias]
-	st = status
-	co = checkout
-  cp = cherry-pick
-  br = branch -v
+  st = status -s -u
+  co = checkout
+  cp = cherry-pick -x
+  d  = diff --color-words
+  dh = diff HEAD
+  dc = diff --cached
+  dw = diff --word-diff
+  br = branch -vv
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  up = remote update
+  pu = pull --rebase
+
+[push]
+  default = tracking
+
+[diff]
+  tool = diffuse
