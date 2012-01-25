@@ -74,6 +74,9 @@ set whichwrap=b,s,[,]
 " enable the use of the mouse in terminals
 set mouse=a
 
+" make the mouse working in urxvt
+set ttymouse=xterm2
+
 " define the key that toogle the paste insert mode
 set pastetoggle=<F2>
 
