@@ -17,14 +17,20 @@ import XMonad.Layout.PerWorkspace (onWorkspace)
 
 import System.IO(hPutStrLn)
 
-myWorkspaces = ["1:main", "2:web", "3:talk", "4:virtual"]
+myWorkspaces = ["1:main", "2:web", "3:talk", "4:virtual", "5", "6", "7", "8", "9"]
+
+myTheme = defaultTheme
+        { inactiveColor = "#073642"
+        , activeColor   = "#dc322f"
+        , fontName      = "xft:Terminus-8"
+        }
 
 myLayoutHook =  workspaceConf $ lessBorders OnlyFloat $ grid ||| tall ||| full
   where myNamed n = named n . spacing 6 . avoidStruts
         grid   = myNamed "grid" Grid
         tall   = myNamed "tall" $ Tall 1 (3/100) (1/2)
         full   = myNamed "full" Full
-        workspaceConf = onWorkspace (myWorkspaces !! 0) (noBorders Full)
+        workspaceConf = onWorkspace (myWorkspaces !! 0) ((avoidStruts . noBorders $ tabbedBottom shrinkText myTheme) ||| noBorders Full)
 
 myKeys = [ ("M-<Left>",  prevWS)
          , ("M-<Right>", nextWS)
@@ -34,36 +40,38 @@ myKeys = [ ("M-<Left>",  prevWS)
          , ("<XF86AudioRaiseVolume>", raiseVolume 4 >> return())
          ]
 
-main = do
-  xmproc <- spawnPipe "xmobar"
-  xmonad $ defaultConfig {
-      terminal = "urxvt"
+myLogHook xmobar = dynamicLogWithPP $ xmobarPP
+                {
+                -- applied to the entire formatted string in order to output it
+                  ppOutput = hPutStrLn xmobar
+                -- how to print the tag of the currently focused workspace
+                , ppCurrent = xmobarColor "#dc322f" ""
+                --  window title format 
+                , ppTitle = xmobarColor "#dc322f" ""
+                -- layout name format
+                , ppLayout = const ""
+                , ppSep = " <fc=#3d3d07> | </fc> "
+                , ppWsSep = " ⚫ "
+                }
 
+myManageHook d = manageDocks
+              -- fix full screen layout for videos etc.
+              <+> composeAll [isFullscreen --> doFullFloat]
+
+              -- use default manageHook
+              <+> manageHook d
+
+main = do
+  xmobarProc <- spawnPipe "xmobar"
+  xmonad $ defaultConfig {
+      terminal           = "urxvt"
     , borderWidth        = 3
     , normalBorderColor  = "#073642"
     , focusedBorderColor = "#dc322f"
-
-    , workspaces = myWorkspaces
-
-    , focusFollowsMouse = True
-
-    , manageHook =
-            manageDocks
-
-        -- fix full screen layout for videos etc.
-        <+> composeAll [isFullscreen --> doFullFloat]
-
-        -- use default manageHook
-        <+> manageHook defaultConfig
-
-    , layoutHook = myLayoutHook
-
-    -- use the ,,windows key'' as mod key
-    , modMask    = mod4Mask
-    , logHook    = dynamicLogWithPP $ xmobarPP
-                    { ppOutput = hPutStrLn xmproc
-                    , ppTitle = xmobarColor "#cdcd57" "" . shorten 50
-                    , ppCurrent = xmobarColor "#cdcd57" ""
-                    , ppSep = " <fc=#3d3d07>|</fc> "
-                    }
+    , focusFollowsMouse  = True
+    , modMask            = mod4Mask
+    , workspaces         = myWorkspaces
+    , manageHook         = myManageHook defaultConfig
+    , layoutHook         = myLayoutHook
+    , logHook            = myLogHook xmobarProc
   } `additionalKeysP` myKeys

@@ -1,13 +1,18 @@
-Config { font = "xft:Terminus-11"
-       , position = TopW L 85
+Config { font = "xft:Terminus-10"
+       , position = Top
+       , border   = BottomB
+       , borderColor = "white"
        , bgColor = "#002b36"
        , fgColor = "#657b83"
        , lowerOnStart = True
-       , commands = [ Run Battery [] 30
-                    , Run StdinReader
+       , commands = [ Run StdinReader
+                    , Run Battery ["-L", "5", "-H", "10","--low","red" ,"--normal","orange","--high","green"
+                                  , "-t", "Battery: <left> % ⚫ <timeleft> ⚫ <acstatus>"] 10
                     , Run Date "%a %b %d %k:%M" "date" 100
+                    , Run Brightness ["-t", "Bright: <percent> %"] 10
+                    , Run Wireless "wlan0" ["-t", "wlan0: <essid> (<quality> %)"] 100
                     ]
        , sepChar = "'"
        , alignSep = "}{"
-       , template = "'StdinReader' }{ 'date'"
+       , template = "  'StdinReader' }{ 'bright' | 'wlan0wi' | 'battery' | 'date'  "
        }
