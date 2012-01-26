@@ -1,4 +1,4 @@
-Config { font = "xft:Terminus-10"
+Config { font = "xft:Terminus-9"
        , position = Top
        , border   = BottomB
        , borderColor = "white"
@@ -6,13 +6,18 @@ Config { font = "xft:Terminus-10"
        , fgColor = "#657b83"
        , lowerOnStart = True
        , commands = [ Run StdinReader
-                    , Run Battery ["-L", "5", "-H", "10","--low","red" ,"--normal","orange","--high","green"
-                                  , "-t", "Battery: <left> % ⚫ <timeleft> ⚫ <acstatus>"] 10
-                    , Run Date "%a %b %d %k:%M" "date" 100
-                    , Run Brightness ["-t", "Bright: <percent> %"] 10
+                    , Run Volume "default" "Master" ["-t", "Vol: <volume> % ⚫ <status> "] 5
                     , Run Wireless "wlan0" ["-t", "wlan0: <essid> (<quality> %)"] 100
+                    , Run Battery [ "-L", "5"
+                                  , "-H", "10"
+                                  , "--high",  "green"
+                                  , "--normal","orange"
+                                  , "--low",   "red"
+                                  , "-t", "Battery: <left> % ⚫ <timeleft> ⚫ <acstatus>"
+                                  ] 10
+                    , Run Date "%a %b %d %k:%M" "date" 100
                     ]
        , sepChar = "'"
        , alignSep = "}{"
-       , template = "  'StdinReader' }{ 'bright' | 'wlan0wi' | 'battery' | 'date'  "
+       , template = "  'StdinReader' }{ ❙ 'default:Master' ❙ 'wlan0wi' ❙ 'battery' ❙ 'date'  "
        }
