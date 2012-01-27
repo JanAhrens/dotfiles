@@ -26,10 +26,10 @@ myTheme = defaultTheme
         }
 
 myLayoutHook =  workspaceConf $ lessBorders OnlyFloat $ grid ||| tall ||| full
-  where myNamed n = named n . spacing 6 . avoidStruts
-        grid   = myNamed "grid" Grid
-        tall   = myNamed "tall" $ Tall 1 (3/100) (1/2)
-        full   = myNamed "full" Full
+  where myNamed n = named n . avoidStruts
+        grid   = (myNamed "grid") . (spacing 6) $ Grid
+        tall   = (myNamed "tall") . (spacing 6) $ Tall 1 (3/100) (1/2)
+        full   = myNamed "full" . smartBorders $ Full
         workspaceConf = onWorkspace (myWorkspaces !! 0) ((avoidStruts . noBorders $ tabbedBottom shrinkText myTheme) ||| noBorders Full)
 
 myKeys = [ ("M-<Left>",  prevWS)
@@ -50,7 +50,7 @@ myLogHook xmobar = dynamicLogWithPP $ xmobarPP
                 , ppTitle = xmobarColor "#dc322f" ""
                 -- layout name format
                 , ppLayout = const ""
-                , ppSep = " <fc=#3d3d07> | </fc> "
+                , ppSep = " ❙ "
                 , ppWsSep = " ⚫ "
                 }
 
