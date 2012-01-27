@@ -62,7 +62,7 @@ myManageHook d = manageDocks
               <+> manageHook d
 
 main = do
-  xmobarProc <- spawnPipe "xmobar"
+  xmobarProc <- spawnPipe "~/.cabal/bin/xmobar"
   xmonad $ defaultConfig {
       terminal           = "urxvt"
     , borderWidth        = 3
