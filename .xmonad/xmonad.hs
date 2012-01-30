@@ -1,4 +1,6 @@
-import XMonad
+import Control.Monad
+
+import XMonad hiding ( (|||) ) -- use the (|||) operator from LayoutCombinators
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
@@ -13,7 +15,11 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Grid
 import XMonad.Layout.Named
 import XMonad.Layout.Tabbed
-import XMonad.Layout.PerWorkspace (onWorkspace)
+import XMonad.Layout.LayoutCombinators
+
+import XMonad.Operations
+
+import qualified XMonad.StackSet as W
 
 import System.IO(hPutStrLn)
 
@@ -25,12 +31,11 @@ myTheme = defaultTheme
         , fontName      = "xft:Terminus-8"
         }
 
-myLayoutHook =  workspaceConf $ lessBorders OnlyFloat $ grid ||| tall ||| full
-  where myNamed n = named n . avoidStruts
-        grid   = (myNamed "grid") . (spacing 6) $ Grid
-        tall   = (myNamed "tall") . (spacing 6) $ Tall 1 (3/100) (1/2)
-        full   = myNamed "full" . smartBorders $ Full
-        workspaceConf = onWorkspace (myWorkspaces !! 0) ((avoidStruts . noBorders $ tabbedBottom shrinkText myTheme) ||| noBorders Full)
+myLayoutHook =  lessBorders OnlyFloat $ tabbed ||| grid ||| tall ||| full
+  where grid   = (named "grid")   . avoidStruts . (spacing 6) $ Grid
+        tall   = (named "tall")   . avoidStruts . (spacing 6) $ Tall 1 (3/100) (1/2)
+        tabbed = (named "tabbed") . avoidStruts . noBorders   $ tabbedBottom shrinkText myTheme
+        full   = (named "full")                 . noBorders   $ Full
 
 myKeys = [ ("M-<Left>",  prevWS)
          , ("M-<Right>", nextWS)
@@ -38,6 +43,10 @@ myKeys = [ ("M-<Left>",  prevWS)
          , ("<XF86AudioMute>",        toggleMute    >> return())
          , ("<XF86AudioLowerVolume>", lowerVolume 4 >> return())
          , ("<XF86AudioRaiseVolume>", raiseVolume 4 >> return())
+
+         -- idea: switch between full and tabbed layout with the F11 key
+         --   withWindowSet (\ws -> when((W.layout . W.workspace . W.current) ws == "full") ())
+         , ("<F11>", sendMessage $ JumpToLayout "full")
          ]
 
 myLogHook xmobar = dynamicLogWithPP $ xmobarPP
