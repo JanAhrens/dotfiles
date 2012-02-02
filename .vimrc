@@ -139,6 +139,9 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " screen for redrawing, instead of using insert/delete line commands.
 set ttyfast
 
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+highlight ExtraWhitespace ctermbg=DarkRed
+
 " ----------------------------------------------------------
 " Plugins
 " -------
@@ -148,6 +151,8 @@ let NERDTreeIgnore=['\.class$', '\~$', '\.bak$']
 nmap <silent> <c-t> :NERDTreeToggle<cr>
 nmap <silent> <c-f> :NERDTreeFind<cr>
 let NERDTreeChDirMode=2
+let g:NERDTreeMapOpenVSplit = "C-v"
+let g:NERDTreeMapOpenSplit  = "C-s"
 
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
@@ -160,7 +165,7 @@ let g:miniBufExplModSelTarget = 1
 
 " lesscss
 autocmd BufNewFile,BufRead *.less set filetype=less
-      
+
 " tmru
 noremap <c-r> :TRecentlyUsedFiles<cr> 
 
