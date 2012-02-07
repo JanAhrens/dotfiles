@@ -178,6 +178,8 @@ set statusline="%{fugitive#statusline()}"
 
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
+
+runtime macros/matchit.vim
 " ----------------------------------------------------------
 
 source ~/.vimrc.local
