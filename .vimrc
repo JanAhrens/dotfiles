@@ -119,8 +119,6 @@ function! s:ToggleColorColumn()
     endif
 endfunction
 
-map <F3> :call <SID>ToggleColorColumn()<cr>
-
 " Move a line up with Alt-Up and move it down with Alt-Down
 nnoremap <A-Up>        :m-2<CR>  ==
 nnoremap <A-Down>      :m+ <CR>  ==
@@ -130,11 +128,6 @@ vnoremap <A-Down>      :m'>+ <CR>gv= gv
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/#using-the-leader
 let mapleader=","
 
-map <F12> :set spell!<cr>
-
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
-
 " Indicates a fast terminal connection. More characters will be sent to the
 " screen for redrawing, instead of using insert/delete line commands.
 set ttyfast
@@ -142,20 +135,25 @@ set ttyfast
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 highlight ExtraWhitespace ctermbg=DarkRed
 
+" its time to completly turn of navigation with the arrow keys
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+noremap <PageDown> <nop>
+noremap <PageUp> <nop>
+noremap <Home> <nop>
+noremap <End> <nop>
+
 " ----------------------------------------------------------
 " Plugins
 " -------
 
 " NerdTree
 let NERDTreeIgnore=['\.class$', '\~$', '\.bak$']
-nmap <silent> <c-t> :NERDTreeToggle<cr>
-nmap <silent> <c-f> :NERDTreeFind<cr>
 let NERDTreeChDirMode=2
 let g:NERDTreeMapOpenVSplit = "C-v"
 let g:NERDTreeMapOpenSplit  = "C-s"
-
-" Gundo
-nnoremap <F5> :GundoToggle<CR>
 
 " minibufexpl
 let g:miniBufExplMapWindowNavVim = 1
@@ -166,12 +164,8 @@ let g:miniBufExplModSelTarget = 1
 " lesscss
 autocmd BufNewFile,BufRead *.less set filetype=less
 
-" tmru
-noremap <c-r> :TRecentlyUsedFiles<cr> 
-
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-map <leader>a :NERDTreeClose<cr>:Ack<space>
 
 " fugetive
 set statusline="%{fugitive#statusline()}"
@@ -181,5 +175,20 @@ let g:solarized_visibility="high"
 
 runtime macros/matchit.vim
 " ----------------------------------------------------------
+
+" custom keybinding
+noremap <leader>e :NERDTreeToggle<cr>
+noremap <leader>f :NERDTreeFind<cr>
+
+nnoremap <leader>u :GundoToggle<CR>
+
+noremap <leader>w :BufExplorerHorizontalSplit<cr>
+noremap <leader>a :NERDTreeClose<cr>:Ack<space>
+
+noremap <leader>s :set spell!<cr>
+
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+map <F3> :call <SID>ToggleColorColumn()<cr>
 
 source ~/.vimrc.local
