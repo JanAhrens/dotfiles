@@ -5,6 +5,9 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 
+set background=dark
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 colorscheme solarized
 
 set tabstop=2 shiftwidth=2 expandtab
@@ -64,9 +67,6 @@ highlight ExtraWhitespace ctermbg=DarkRed
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
-" solarize
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
 runtime macros/matchit.vim
 
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/#using-the-leader
