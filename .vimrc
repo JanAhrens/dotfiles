@@ -83,7 +83,7 @@ noremap <Home> <nop>
 noremap <End> <nop>
 
 noremap <leader>s :set spell!<cr>
-noremap <leader>l :nohlsearch<cr>
+noremap <leader>n :nohlsearch<cr>
 
 " define the key that toogle the paste insert mode
 set pastetoggle=<Leader>p
