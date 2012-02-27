@@ -69,6 +69,11 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 runtime macros/matchit.vim
 
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so
+
+" CtrlP
+let g:ctrlp_working_path_mode = 2
+
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/#using-the-leader
 let mapleader=","
 
@@ -82,8 +87,27 @@ noremap <PageUp> <nop>
 noremap <Home> <nop>
 noremap <End> <nop>
 
+inoremap jj <esc>
+" 'promote' the new <esc> key
+inoremap <esc> <nop>
+
 noremap <leader>s :set spell!<cr>
 noremap <leader>n :nohlsearch<cr>
+noremap <leader>p :CtrlP<cr>
+noremap <leader>e :NERDTreeToggle<cr>
+noremap <leader>f :NERDTreeFind<cr>
+
+noremap <leader>gb :Gblame<cr>
+noremap <leader>gl :Glog<cr>
+
+" fast window switching
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+noremap g0 :tabfirst<cr>
+noremap g$ :tablast<cr>
 
 " define the key that toogle the paste insert mode
 set pastetoggle=<Leader>p
