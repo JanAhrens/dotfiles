@@ -36,3 +36,5 @@ setopt nohup
 
 # who needs a clock? keep on smiling! ;-)
 export RPROMPT=":-)"
+
+zsh ~/dotfiles/bin/update.sh

@@ -26,6 +26,7 @@ function _upgrade_dotfiles() {
   else
     printf '\033[0;31m%s\033[0m\n' 'Update failed'
   fi
+  git st -uno
 
   _update_dotfiles_update
   cd $LAST_DIR
