@@ -16,10 +16,14 @@
   dh = diff HEAD
   dc = diff --cached
   dw = diff --word-diff
+  df = diff --stat
   br = branch -vv
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  lg = log --graph --pretty=format:'%Cred%h%Creset %s%C(yellow)%d%Creset (%Cgreen%an%Creset, %cr)' --abbrev-commit --date=relative
+  l  = !git --no-pager lg -10
+  ll = !git --no-pager lg -30
   up = remote update
   pu = pull --rebase
+  su = !git submodule update
 
 [push]
   default = tracking

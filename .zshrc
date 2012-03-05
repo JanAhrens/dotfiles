@@ -37,4 +37,6 @@ setopt nohup
 # who needs a clock? keep on smiling! ;-)
 export RPROMPT=":-)"
 
+alias git="nocorrect git"
+
 zsh ~/dotfiles/bin/update.sh
