@@ -11,4 +11,4 @@ do
   fi
 done
 
-source `dirname $0/_post_install`
+source `dirname $0`/_post_install

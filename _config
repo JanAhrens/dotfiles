@@ -6,6 +6,6 @@ README.md|\
 install.sh|\
 test_links.sh|\
 bin|\
-_config\
+_.*\
 )"
 FILES=$(cd $SCRIPT_PATH; ls -1a | grep -Ev $IGNORE_FILES_REGEX | grep -Ev '^.(.?|git(modules|ignore)?)$')
