@@ -5,4 +5,4 @@ test_links.sh|\
 bin|\
 _config\
 )"
-FILES=$(ls -1a | grep -Ev $IGNORE_FILES_REGEX | grep -Ev '^.(.?|git(modules|ignore)?)$')
+FILES=$(cd ~/dotfiles; ls -1a | grep -Ev $IGNORE_FILES_REGEX | grep -Ev '^.(.?|git(modules|ignore)?)$')

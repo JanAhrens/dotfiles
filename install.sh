@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source _config
+source ~/dotfiles/_config
 
 for config in $FILES
 do
