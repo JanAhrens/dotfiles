@@ -5,10 +5,7 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 
-set background=dark
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-colorscheme solarized
+colorscheme pablo
 
 set tabstop=2 shiftwidth=2 expandtab
 set textwidth=120

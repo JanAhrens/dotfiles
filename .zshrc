@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="blinks"
+ZSH_THEME="gallifrey"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -40,3 +40,6 @@ export RPROMPT=":-)"
 alias git="nocorrect git"
 
 zsh ~/dotfiles/bin/update.sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PROMPT='%2~ $(git_prompt_info)%{$reset_color%}%B»%b '
