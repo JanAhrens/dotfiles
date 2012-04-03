@@ -1,3 +1,6 @@
+SELF=`readlink $0 || echo $0`
+SCRIPT_PATH=$(cd `dirname $0`; cd `dirname $SELF`; pwd;)
+
 IGNORE_FILES_REGEX="(\
 README.md|\
 install.sh|\
@@ -5,4 +8,4 @@ test_links.sh|\
 bin|\
 _config\
 )"
-FILES=$(cd ~/dotfiles; ls -1a | grep -Ev $IGNORE_FILES_REGEX | grep -Ev '^.(.?|git(modules|ignore)?)$')
+FILES=$(cd $SCRIPT_PATH; ls -1a | grep -Ev $IGNORE_FILES_REGEX | grep -Ev '^.(.?|git(modules|ignore)?)$')
