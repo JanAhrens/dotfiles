@@ -6,6 +6,7 @@ for config in $FILES
 do
   if [ ! -h ~/$config ]
   then
-    echo "Seems like $config is not linked"
+    echo "Linking $config ..."
+    ln -s ~/dotfiles/$config ~/$config
   fi
 done
