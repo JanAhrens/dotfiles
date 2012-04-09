@@ -74,16 +74,6 @@ let g:ctrlp_working_path_mode = 2
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/#using-the-leader
 let mapleader=","
 
-" its time to completly turn of navigation with the arrow keys
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-noremap <PageDown> <nop>
-noremap <PageUp> <nop>
-noremap <Home> <nop>
-noremap <End> <nop>
-
 inoremap jj <esc>
 " 'promote' the new <esc> key
 inoremap <esc> <nop>
