@@ -5,11 +5,11 @@ class SyncSandboxCommand(sublime_plugin.TextCommand):
 
     def getSandboxCommands(self, sandbox):
         RSYNC_OPTIONS="--exclude='.git*' --exclude='htdocs/' --exclude='log/' --exclude='conf/settings*' --exclude='tmp/' --exclude='gems' --exclude '.tm_sync.config' "
-        REMOTE_PORT="2222"
+        REMOTE_PORT="22"
+        REMOTE_HOST="threadpost-jan-ahrens.env.xing.com"
         REMOTE_USER="vagrant"
-        REMOTE_HOST="pandora"
-        LOCAL_PATH ="~/Coding/Source/Xing/rails-app"
-        REMOTE_PATH="~/sandbox/"        
+        LOCAL_PATH ="~/projects/rails-app"
+        REMOTE_PATH="~/sandbox/"
 
         rsync = "rsync -p -P -C -zar {0} --port {1} {2} {3}@{4}:{5}".format(RSYNC_OPTIONS, REMOTE_PORT, LOCAL_PATH, REMOTE_USER, REMOTE_HOST, REMOTE_PATH)
 
