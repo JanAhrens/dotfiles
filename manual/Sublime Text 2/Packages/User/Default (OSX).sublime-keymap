@@ -1,0 +1,6 @@
+[
+	{ "keys": ["super+shift+s"], "command": "sync_sandbox" },
+	{ "keys": ["ctrl+u"], "command": "move", "args": {"by": "pages", "forward": false } },
+	{ "keys": ["ctrl+d"], "command": "move", "args": {"by": "pages", "forward": true } },
+	{ "keys": ["super+shift+l"], "command": "reveal_in_side_bar" }
+]

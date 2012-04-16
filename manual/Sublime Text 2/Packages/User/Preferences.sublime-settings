@@ -1,0 +1,14 @@
+{
+	  "font_size": 20.0
+	, "rulers": [80, 120]
+	, "tab_size": 2
+	, "line_numbers": true
+	, "overlay_scroll_bars": "enabled"
+
+	, "ignored_packages": []
+	, "vintage_start_in_command_mode": true
+	, "vintage_ctrl_keys": true
+
+	// don't use the fancy MacOS fullscreen mode
+	, "use_simple_full_screen": true
+}
