@@ -58,11 +58,8 @@ autocmd BufRead .git/COMMIT_EDITMSG setlocal textwidth=72
 set showmatch matchtime=3
 highlight MatchParen ctermbg=white
 
-autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-highlight ExtraWhitespace ctermbg=DarkRed
-
 " ack
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:ackprg="ack -H --nocolor --nogroup --column"
 
 runtime macros/matchit.vim
 
@@ -70,13 +67,15 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so
 
 " CtrlP
 let g:ctrlp_working_path_mode = 2
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
 
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/#using-the-leader
 let mapleader=","
 
 inoremap jj <esc>
 " 'promote' the new <esc> key
-inoremap <esc> <nop>
+"inoremap <esc> <nop>
 
 noremap <leader>s :set spell!<cr>
 noremap <leader>n :nohlsearch<cr>
@@ -99,4 +98,10 @@ noremap g$ :tablast<cr>
 " define the key that toogle the paste insert mode
 set pastetoggle=<Leader>p
 
+"display tabs and trailing spaces
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+
+set ruler
+set clipboard+=unnamed
 source ~/.vimrc.local

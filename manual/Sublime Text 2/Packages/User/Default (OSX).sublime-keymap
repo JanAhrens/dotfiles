@@ -1,4 +1,0 @@
-[
-	{ "keys": ["super+shift+s"], "command": "sync_sandbox" },
-	{ "keys": ["super+shift+l"], "command": "reveal_in_side_bar" }
-]

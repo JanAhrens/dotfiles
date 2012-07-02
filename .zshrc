@@ -41,5 +41,4 @@ alias git="nocorrect git"
 
 zsh ~/dotfiles/bin/update.sh
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PROMPT='%2~ $(git_prompt_info)%{$reset_color%}%B»%b '

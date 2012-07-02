@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-afterimage"]
 	path = .vim/bundle/vim-afterimage
 	url = https://github.com/tpope/vim-afterimage.git
+[submodule ".vim/bundle/ctrlp"]
+	path = .vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim
