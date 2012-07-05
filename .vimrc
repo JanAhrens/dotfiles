@@ -104,4 +104,7 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 set ruler
 set clipboard+=unnamed
+
+highlight Pmenu ctermbg=238 gui=bold
+
 source ~/.vimrc.local
