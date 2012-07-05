@@ -97,7 +97,7 @@ set pastetoggle=<Leader>p
 
 "display tabs and trailing spaces
 set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+set listchars=trail:⋅,nbsp:⋅,tab:>-
 
 set ruler
 set clipboard+=unnamed
