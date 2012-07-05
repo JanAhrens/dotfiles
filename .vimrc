@@ -102,6 +102,15 @@ set listchars=trail:⋅,nbsp:⋅,tab:>-
 set ruler
 set clipboard+=unnamed
 
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+" Shortcut for expanding to the directory of the currently displayed file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" Shortcut for expanding to full filename of the currently displayed file
+cnoremap $$ <C-R>=expand('%')<cr>
+
 highlight Pmenu ctermbg=238 gui=bold
 
 source ~/.vimrc.local
