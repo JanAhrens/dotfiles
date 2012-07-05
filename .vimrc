@@ -39,9 +39,6 @@ set equalalways
 " current one
 set splitright
 
-" Characters to fill the statusline and vertical seperators
-set fillchars=vert:\ ,fold:\ 
-
 " enable the use of the mouse in terminals
 set mouse=a ttymouse=xterm2
 
