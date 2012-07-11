@@ -71,8 +71,6 @@ let g:ctrlp_clear_cache_on_exit = 0
 let mapleader=","
 
 inoremap jj <esc>
-" 'promote' the new <esc> key
-"inoremap <esc> <nop>
 
 noremap <leader>s :set spell!<cr>
 noremap <leader>n :nohlsearch<cr>
@@ -88,12 +86,6 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-
-noremap g0 :tabfirst<cr>
-noremap g$ :tablast<cr>
-
-" define the key that toogle the paste insert mode
-set pastetoggle=<Leader>p
 
 "display tabs and trailing spaces
 set list
