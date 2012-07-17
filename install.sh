@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source `dirname $0`/_config
+. `dirname $0`/_config
 
 for config in $FILES
 do
@@ -11,4 +11,4 @@ do
   fi
 done
 
-source `dirname $0`/_post_install
+. `dirname $0`/_post_install
