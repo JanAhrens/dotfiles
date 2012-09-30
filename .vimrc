@@ -93,4 +93,6 @@ cnoremap $$ <C-R>=expand('%')<cr>
 
 highlight Pmenu ctermbg=238 gui=bold
 
+imap jj <esc>
+
 source ~/.vimrc.local
