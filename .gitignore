@@ -1,3 +1,4 @@
 .vim/spell/
 .vim/cache
 .DS_Store
+.vim/.netrwhist
