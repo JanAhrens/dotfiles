@@ -63,7 +63,10 @@ let g:ackprg="ack -H --nocolor --nogroup --column"
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so
 
+" source https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
 noremap <cr> :nohlsearch<cr>
+autocmd CmdwinEnter * :unmap <cr>
+
 noremap <leader>e :NERDTreeToggle<cr>
 noremap <leader>f :NERDTreeFind<cr>
 
