@@ -24,7 +24,7 @@
   up = remote update --prune
   pu = pull --rebase
   su = !git submodule update
-  latest = for-each-ref --sort=-committerdate --format='%(committerdate:relative) %(refname:short)'
+  latest = ! git for-each-ref --sort=-committerdate --format='%(committerdate:relative) %(refname:short)' | head
 
 [push]
   default = tracking
