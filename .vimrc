@@ -76,6 +76,9 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+nnoremap <silent> <Leader>n :CommandT<CR>
+nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+
 "display tabs and trailing spaces
 set list
 set listchars=trail:⋅,nbsp:⋅,tab:>-
