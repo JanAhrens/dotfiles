@@ -37,9 +37,6 @@
 [submodule ".vim/bundle/vim-endwise"]
 	path = .vim/bundle/vim-endwise
 	url = https://github.com/tpope/vim-endwise.git
-[submodule ".vim/bundle/zencoding-vim"]
-	path = .vim/bundle/zencoding-vim
-	url = https://github.com/mattn/zencoding-vim.git
 [submodule ".vim/bundle/command-t"]
 	path = .vim/bundle/command-t
 	url = https://github.com/wincent/Command-T.git
