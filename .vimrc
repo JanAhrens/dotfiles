@@ -5,6 +5,8 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 
+colorscheme darkblue
+
 set tabstop=2 shiftwidth=2 expandtab
 set textwidth=120
 set nowrap
@@ -101,4 +103,8 @@ highlight Pmenu ctermbg=238 gui=bold
 
 imap jj <esc>
 
+nnoremap <silent> <Leader>n :CommandT<CR>
+nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+
 source ~/.vimrc.local
+autocmd VimEnter,BufNewFile,BufReadPost * call HardMode()

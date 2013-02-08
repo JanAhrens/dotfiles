@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/command-t"]
 	path = .vim/bundle/command-t
 	url = https://github.com/wincent/Command-T.git
+[submodule ".vim/bundle/hardmode"]
+	path = .vim/bundle/hardmode
+	url = https://github.com/wikitopian/hardmode.git
