@@ -7,22 +7,20 @@ call vundle#rc()
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
 Bundle 'mileszs/ack.vim'
 Bundle 'wikitopian/hardmode'
-Bundle 'tpope/vim-endwise'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdtree'
 Bundle 'wincent/Command-T'
 Bundle 'edsono/vim-matchit'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-
 Bundle 'janx/vim-rubytest'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
 
 Bundle 'kana/vim-textobj-user'
-" depends on vim-textobj-user
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
 filetype plugin indent on
