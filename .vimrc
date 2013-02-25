@@ -1,9 +1,32 @@
 set nocompatible
+filetype off
 
-" Pathogen
-call pathogen#infect()
-syntax on
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'mileszs/ack.vim'
+Bundle 'wikitopian/hardmode'
+Bundle 'tpope/vim-endwise'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/nerdtree'
+Bundle 'wincent/Command-T'
+Bundle 'edsono/vim-matchit'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+
+Bundle 'janx/vim-rubytest'
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-powerline'
+
+Bundle 'kana/vim-textobj-user'
+" depends on vim-textobj-user
+Bundle 'nelstrom/vim-textobj-rubyblock'
+
 filetype plugin indent on
+syntax on
 
 colorscheme darkblue
 
@@ -107,4 +130,3 @@ nnoremap <silent> <Leader>n :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
 source ~/.vimrc.local
-autocmd VimEnter,BufNewFile,BufReadPost * call HardMode()
