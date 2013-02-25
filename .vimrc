@@ -1,4 +1,6 @@
 set nocompatible
+
+" // vundle -----------------------------------------------------------
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
@@ -26,15 +28,16 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 filetype plugin indent on
 syntax on
 
+" // syntax -----------------------------------------------------------
 colorscheme darkblue
 
+" // options ----------------------------------------------------------
 set tabstop=2 shiftwidth=2 expandtab
 set textwidth=120
 set nowrap
 set autoindent
 set hlsearch
-set ignorecase smartcase
-set number
+set smartcase
 
 " Automatically insert the current comment leader after
 " hitting 'o' or 'O' in Normal mode.
@@ -64,8 +67,34 @@ set mouse=a ttymouse=xterm2
 " screen for redrawing, instead of using insert/delete line commands.
 set ttyfast
 
+" show the matched parenthesis for 0.3 seconds
+set showmatch matchtime=3
+
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so
+
+" always display the tabline
+set showtabline=2
+
+set iskeyword+=-
+
+" // pattern ----------------------------------------------------------
+set ignorecase
+
+" // various ----------------------------------------------------------
+set number
+
+"display tabs and trailing spaces
+set list
+set listchars=trail:⋅,nbsp:⋅,tab:>-
+
+" // gui --------------------------------------------------------------
+set clipboard+=unnamed
+
+" // map  -------------------------------------------------------------
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/#using-the-leader
 let mapleader=","
+
+" // autocmd ----------------------------------------------------------
 
 " Jump to last cursor position unless it's invalid or in an event handler
 autocmd BufReadPost *
@@ -77,14 +106,8 @@ autocmd BufRead,BufNewFile Makefile setlocal noexpandtab
 autocmd FileType mail setlocal textwidth=72
 autocmd BufRead .git/COMMIT_EDITMSG setlocal textwidth=72
 
-" show the matched parenthesis for 0.3 seconds
-set showmatch matchtime=3
-highlight MatchParen ctermbg=white
-
 " ack
 let g:ackprg="ack -H --nocolor --nogroup --column"
-
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so
 
 " source https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
 noremap <cr> :nohlsearch<cr>
@@ -102,15 +125,6 @@ noremap <C-l> <C-w>l
 nnoremap <silent> <Leader>n :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
-"display tabs and trailing spaces
-set list
-set listchars=trail:⋅,nbsp:⋅,tab:>-
-
-set clipboard+=unnamed
-
-" always display the tabline
-set showtabline=2
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
@@ -127,4 +141,5 @@ imap jj <esc>
 nnoremap <silent> <Leader>n :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
-source ~/.vimrc.local
+" // powerline --------------------------------------------------------
+let g:Powerline_symbols = 'fancy'
