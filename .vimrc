@@ -30,7 +30,7 @@ filetype plugin indent on
 syntax on
 
 " // syntax -----------------------------------------------------------
-colorscheme darkblue
+colorscheme default
 
 " // options ----------------------------------------------------------
 set tabstop=2 shiftwidth=2 expandtab
