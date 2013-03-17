@@ -21,6 +21,7 @@ Bundle 'edsono/vim-matchit'
 Bundle 'janx/vim-rubytest'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'pbrisbin/html-template-syntax'
 
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
