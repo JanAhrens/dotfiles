@@ -142,5 +142,7 @@ imap jj <esc>
 nnoremap <silent> <Leader>n :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
+set background=dark
+
 " // powerline --------------------------------------------------------
 let g:Powerline_symbols = 'fancy'
