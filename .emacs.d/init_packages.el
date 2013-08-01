@@ -10,7 +10,11 @@
 (package-initialize)
 
 (defvar prelude-packages
-  '(magit flycheck solarized-theme)
+  '(magit
+    flycheck
+    solarized-theme
+    auto-indent-mode
+    )
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()
