@@ -2,10 +2,6 @@
 
 (load "init_packages")
 
-(load-theme 'deeper-blue)
-(set-default-font "Monospace-14")
-(set-frame-font "Monospace-14")
-
 ;; disable some gui stuff
 (tool-bar-mode -1)
 (menu-bar-mode -1)
