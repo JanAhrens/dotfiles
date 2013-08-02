@@ -1,6 +1,11 @@
+;;; init.el -- start of the emacs config
+;;; Commentary:
+;;; Code:
+
 (add-to-list 'load-path (file-name-directory (or load-file-name buffer-file-name)))
 
 (load "init_packages")
+(load "init-linum")
 
 ;; disable some gui stuff
 (tool-bar-mode -1)
@@ -58,3 +63,9 @@
  )
 
 (load-theme 'solarized-light)
+
+(setq magit-default-tracking-name-function 'magit-default-tracking-name-branch-only)
+
+(provide 'init)
+
+;;; init.el ends here
