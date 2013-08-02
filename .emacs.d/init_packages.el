@@ -14,6 +14,7 @@
     flycheck
     solarized-theme
     auto-indent-mode
+    markdown-mode
     )
   "A list of packages to ensure are installed at launch.")
 

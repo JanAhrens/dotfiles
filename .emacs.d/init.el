@@ -18,6 +18,8 @@
 ;; display column numbers in the status bar
 (column-number-mode t)
 
+(set-frame-font "Monospace-16")
+
 ;; highlight evil whitespace
 (setq-default show-trailing-whitespace t)
 
@@ -48,7 +50,6 @@
 
 (dolist (hook '(emacs-lisp-mode-hook ruby-mode-hook)) (add-hook hook 'flycheck-mode))
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,5 +68,4 @@
 (setq magit-default-tracking-name-function 'magit-default-tracking-name-branch-only)
 
 (provide 'init)
-
 ;;; init.el ends here
