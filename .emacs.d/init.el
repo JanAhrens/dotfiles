@@ -63,6 +63,9 @@
  ;; If there is more than one, they won't work right.
  )
 
+(require 'saveplace)
+(setq-default save-place t)
+
 (load-theme 'solarized-light)
 
 (setq magit-default-tracking-name-function 'magit-default-tracking-name-branch-only)

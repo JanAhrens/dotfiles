@@ -4,6 +4,8 @@
 (require 'linum)
 
 (add-hook 'emacs-lisp-mode-hook '(lambda () (linum-mode t)))
+(add-hook 'ruby-mode-hook
+	  '(lambda () (linum-mode t)))
 
 (provide 'init-linum)
 ;;; init-linum.el ends here
