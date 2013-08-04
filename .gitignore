@@ -7,3 +7,4 @@
 .emacs.d/auto-save-list
 *~
 /.emacs.d/url/cookies
+/.mutt/certificates
