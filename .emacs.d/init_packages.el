@@ -15,6 +15,7 @@
     solarized-theme
     auto-indent-mode
     markdown-mode
+    ess
     )
   "A list of packages to ensure are installed at launch.")
 
