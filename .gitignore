@@ -5,6 +5,7 @@
 .vim/bundle
 .emacs.d/elpa
 .emacs.d/auto-save-list
-*~
 /.emacs.d/url/cookies
 /.mutt/certificates
+.emacs.d/eshell/history
+*~
