@@ -16,6 +16,7 @@
     auto-indent-mode
     markdown-mode
     ess
+    ack-and-a-half
     )
   "A list of packages to ensure are installed at launch.")
 

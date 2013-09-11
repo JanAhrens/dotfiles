@@ -39,8 +39,8 @@
 
 ;; MacOSX specific settings
 (when (eq system-type 'darwin)
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier  'alt)
+   (setq mac-command-modifier 'meta)
+   (setq mac-option-modifier  'alt)
 )
 
 ;; always start maximized
@@ -69,6 +69,15 @@
 (load-theme 'solarized-light)
 
 (setq magit-default-tracking-name-function 'magit-default-tracking-name-branch-only)
+
+(ido-mode t)
+
+(setq default-tab-width 2)
+(setq js-indent-level 2)
+
+(setq speedbar-mode-hook '(lambda ()
+                            (interactive)
+                            (other-frame 0)))
 
 (provide 'init)
 ;;; init.el ends here
