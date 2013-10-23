@@ -52,4 +52,8 @@
   (message "Loading personal configuration files in %s..." prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir 't "^[^#].*el$")))
 
+;; don't close Emacs, because it's running in daemon mode
+(global-unset-key (kbd "C-x C-c"))
+(global-unset-key (kbd "C-x C-z"))
+
 ;;; init.el ends here
