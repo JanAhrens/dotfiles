@@ -56,4 +56,7 @@
 (global-unset-key (kbd "C-x C-c"))
 (global-unset-key (kbd "C-x C-z"))
 
+;; projectile caching
+(setq projectile-enable-caching t)
+
 ;;; init.el ends here
