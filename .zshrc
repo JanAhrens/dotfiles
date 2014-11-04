@@ -39,8 +39,6 @@ export RPROMPT=":-)"
 
 alias git="nocorrect git"
 
-zsh ~/dotfiles/bin/update.sh
-
 PROMPT='%2~ $(git_prompt_info)%{$reset_color%}%B»%b '
 
 alias be='bundle exec'
