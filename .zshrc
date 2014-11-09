@@ -43,3 +43,4 @@ PROMPT='%2~ $(git_prompt_info)%{$reset_color%}%B»%b '
 
 alias be='bundle exec'
 alias bi='bundle install'
+alias ec='emacsclient'
