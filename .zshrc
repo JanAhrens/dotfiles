@@ -43,6 +43,5 @@ alias be='bundle exec'
 alias bi='bundle install'
 alias ec='emacsclient'
 
-eval $(ssh-agent)
 alias ssh="ssh-add -l >/dev/null || ssh-add -t 10m && unalias ssh; ssh"
 alias git="ssh-add -l >/dev/null || ssh-add -t 10m && unalias git; git"
