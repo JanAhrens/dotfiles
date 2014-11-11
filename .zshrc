@@ -44,4 +44,13 @@ alias bi='bundle install'
 alias ec='emacsclient'
 
 alias ssh="ssh-add -l >/dev/null || ssh-add -t 10m; \ssh"
-alias git="ssh-add -l >/dev/null || ssh-add -t 10m; \git"
+
+git_wrapper() {
+  if [[ "$1" = "push" || "$1" = "pull" ]]; then
+    ssh-add -l >/dev/null || ssh-add -t 10m
+  fi
+
+  \git $@
+}
+
+alias git=git_wrapper
