@@ -1,2 +1,0 @@
-# make sure to not overwrite the file if it already exists
-touch ~/.vimrc.local
