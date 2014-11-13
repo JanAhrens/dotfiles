@@ -46,7 +46,7 @@ alias ec='emacsclient'
 alias ssh="ssh-add -l >/dev/null || ssh-add -t 10m; \ssh"
 
 git_wrapper() {
-  if [[ "$1" = "push" || "$1" = "pull" ]]; then
+  if [[ "$1" = "push" || "$1" = "pull" || "$1" = "fetch" ]]; then
     ssh-add -l >/dev/null || ssh-add -t 10m
   fi
 
