@@ -9,7 +9,7 @@
 set -e
 
 lock_file=~/.backup-lock
-last_backup=~/.last-backup
+last_backup=~/.last-backup # see the `outdated-backup' script
 
 notify() {
   local icon=$1
@@ -60,6 +60,7 @@ if network=$(wifi); then
     notify info "Backup finished" \
       "Congrats. Another successful backup finished in ${duration} seconds. You have currently $(compressed_size) of compressed data stored."
 
+    # see the `outdated-backup' script
     date +%s > "${last_backup}"
   else
     notify warning "Backup did not finish" \
