@@ -53,7 +53,13 @@ if network=$(wifi); then
   fi
 
   if $(do_backup); then
-    notify info "Backup finished" "Congrats. Another successful backup. You have currently $(compressed_size) of compressed data stored." 
+    start_time=$(cat "${lock_file}")
+    end_time=$(date +%s)
+    duration=$(echo "${end_time} - ${start_time}" | bc)
+
+    notify info "Backup finished" \
+      "Congrats. Another successful backup finished in ${duration} seconds. You have currently $(compressed_size) of compressed data stored."
+
     date +%s > "${last_backup}"
   else
     notify warning "Backup did not finish" \
