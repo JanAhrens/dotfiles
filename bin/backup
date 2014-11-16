@@ -1,0 +1,71 @@
+#!/bin/bash
+# Start a new Tarsnap backup if no other backup is running and the computer is connected to a wifi.
+# The idea is not to do a backup when it is connected to a mobile data connection (LTE/UMTS).
+#
+# You have to configure sudo to allow `tarsnapper` and `tarsnap` without password.
+
+set -e
+
+lock_file=~/.backup-lock
+last_backup=~/.last-backup
+
+notify() {
+  local icon=$1
+  local title=$2
+  local body=$3
+
+  echo "${title}. ${body}" >&2
+
+  notify-send -i "${icon}" "${title}" "${body}"
+}
+
+wifi() {
+  iwconfig wlan0 | grep ESSID | cut -d':' -f2 | sed 's/^[^"]*"\|"[^"]*$//g' | grep -v 'off/any'
+}
+
+do_backup() {
+  sudo /usr/local/bin/tarsnapper -c /root/.tarsnapper.conf make
+}
+
+compressed_size() {
+  sudo tarsnap --humanize-numbers --print-stats | grep 'unique data' | awk '{print $5 " " $6}'
+}
+
+backup_still_running() {
+  if [[ -f "${lock_file}" ]]; then
+    local now="$(date +%s)"
+    local running=$(cat "${lock_file}")
+    echo "${now} - ${running}" | bc
+  else
+    return 1
+  fi
+}
+
+if network=$(wifi); then
+  if since=$(backup_still_running); then
+    notify info "Not starting another backup" "A previous backup job is still running (since ${since} seconds)."
+    exit 1
+  else
+    notify info "Starting backup" "Connected to network \"${network}\"."
+    date +%s > "${lock_file}"
+  fi
+
+  if $(do_backup); then
+    notify info "Backup finished" "Congrats. Another successful backup. You have currently $(compressed_size) of compressed data stored." 
+    date +%s > "${last_backup}"
+  else
+    notify warning "Backup did not finish" \
+      "The backup returned with a non-zero exit code. Please execute it manually to find out what's going on."
+  fi
+
+  rm "${lock_file}"
+else
+  if diff=$(outdated-backup); then
+    notify error "Backup failed too often" \
+      "Your backup has not been done for ${diff} seconds and can't be started. Do it manually ASAP!"
+  else
+    notify warning "Backup failed" "Not connected to a wireless network (\"${network}\")"
+  fi
+
+  exit 1
+fi

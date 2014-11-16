@@ -55,3 +55,7 @@ git_wrapper() {
 }
 
 alias git=git_wrapper
+
+if since=$(outdated-backup 2>/dev/null); then
+  echo "WARNING: You need to do a backup now! It has not been done for ${since} seconds."
+fi
