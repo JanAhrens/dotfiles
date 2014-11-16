@@ -2,6 +2,8 @@
 # Start a new Tarsnap backup if no other backup is running and the computer is connected to a wifi.
 # The idea is not to do a backup when it is connected to a mobile data connection (LTE/UMTS).
 #
+# Requirements: X11, iwconfig, tarnap and tarsnapper
+#
 # You have to configure sudo to allow `tarsnapper` and `tarsnap` without password.
 
 set -e
