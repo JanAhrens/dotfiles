@@ -2,7 +2,7 @@
 # Start a new Tarsnap backup if no other backup is running and the computer is connected to a wifi.
 # The idea is not to do a backup when it is connected to a mobile data connection (LTE/UMTS).
 #
-# Requirements: X11, iwconfig, tarnap and tarsnapper
+# Requirements: X11, tarnap and tarsnapper
 #
 # You have to configure sudo to allow `tarsnapper` and `tarsnap` without password.
 
@@ -19,10 +19,6 @@ notify() {
   echo "${title}. ${body}" >&2
 
   notify-send -i "${icon}" "${title}" "${body}"
-}
-
-wifi() {
-  iwconfig wlan0 | grep ESSID | cut -d':' -f2 | sed 's/^[^"]*"\|"[^"]*$//g' | grep -v 'off/any'
 }
 
 do_backup() {
@@ -43,38 +39,35 @@ backup_still_running() {
   fi
 }
 
-if network=$(wifi); then
-  if since=$(backup_still_running); then
-    notify info "Not starting another backup" "A previous backup job is still running (since ${since} seconds)."
-    exit 1
-  else
-    notify info "Starting backup" "Connected to network \"${network}\"."
-    date +%s > "${lock_file}"
-  fi
+if since=$(backup_still_running); then
+  notify info "Not starting another backup" "A previous backup job is still running (since ${since} seconds)."
+  exit 1
+else
+  notify info "Starting backup" ""
+  date +%s > "${lock_file}"
+fi
 
-  if $(do_backup); then
-    start_time=$(cat "${lock_file}")
-    end_time=$(date +%s)
-    duration=$(echo "${end_time} - ${start_time}" | bc)
+if $(do_backup); then
+  start_time=$(cat "${lock_file}")
+  end_time=$(date +%s)
+  duration=$(echo "${end_time} - ${start_time}" | bc)
 
-    notify info "Backup finished" \
-      "Congrats. Another successful backup finished in ${duration} seconds. You have currently $(compressed_size) of compressed data stored."
+  notify info "Backup finished" \
+    "Congrats. Another successful backup finished in ${duration} seconds. You have currently $(compressed_size) of compressed data stored."
 
-    # see the `outdated-backup' script
-    date +%s > "${last_backup}"
+  # see the `outdated-backup' script
+  date +%s > "${last_backup}"
+else
+  if diff=$(outdated-backup); then
+    notify error "Backup failed too often" \
+      "Your backup has not been done for ${diff} seconds and can't be started. Do it manually ASAP!"
   else
     notify warning "Backup did not finish" \
       "The backup returned with a non-zero exit code. Please execute it manually to find out what's going on."
   fi
 
   rm "${lock_file}"
-else
-  if diff=$(outdated-backup); then
-    notify error "Backup failed too often" \
-      "Your backup has not been done for ${diff} seconds and can't be started. Do it manually ASAP!"
-  else
-    notify warning "Backup failed" "Not connected to a wireless network (\"${network}\")"
-  fi
-
   exit 1
 fi
+
+rm "${lock_file}"
