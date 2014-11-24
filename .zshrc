@@ -57,5 +57,16 @@ git_wrapper() {
 alias git=git_wrapper
 
 if since=$(outdated-backup 2>/dev/null); then
-  echo "WARNING: You need to do a backup now! It has not been done for ${since} seconds."
+  echo "WARNING: You need to do a backup now!"
+  echo "Your last backup is ${since} seconds old."
+fi
+
+up_since_days() {
+  uptime=$(uptime -p)
+  # https://gitorious.org/procps/procps/source/3a66fba1e934cbd830df572d8d03c05b4f4a5f1e:proc/whattime.c#L78-84
+  [[ $(echo "${uptime}" | grep day | cut -d' ' -f2) -gt 2 ]] && echo "${uptime}"
+}
+
+if output=$(up_since_days); then
+  echo "WARNING: This machine is running since ${output} already"
 fi
