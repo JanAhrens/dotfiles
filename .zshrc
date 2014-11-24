@@ -47,7 +47,7 @@ alias ssh="ssh-add -l >/dev/null || ssh-add -t 10m; \ssh"
 alias xing="ssh-add -l >/dev/null || ssh-add -t 10m; \xing"
 
 git_wrapper() {
-  if [[ "$1" = "push" || "$1" = "pull" || "$1" = "fetch" ]]; then
+  if [[ "$1" = "push" || "$1" = "pull" || "$1" = "fetch" || "$1" = "clone" ]]; then
     ssh-add -l >/dev/null || ssh-add -t 10m
   fi
 
