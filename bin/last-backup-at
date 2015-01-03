@@ -5,11 +5,10 @@ now = Time.now
 if time.day == now.day && time.month == now.month && time.year == now.year
   minute_diff = (now.to_i - time.to_i) / 60.0
   if minute_diff < 1
-    minute_diff = 'less than a minute'
+    puts "The last backup was less than a minute ago"
   else
-    minute_diff = "#{minute_diff.to_i} minute(s)"
+    puts "The last backup was #{minute_diff.to_i} minute(s) ago at #{time.strftime('%H:%M')}"
   end
-  puts "The last backup was #{minute_diff} ago at #{time.strftime('%H:%M')}"
 else
   day_diff = now.day - time.day
   puts "The last backup was #{day_diff} day(s) ago #{time}"
