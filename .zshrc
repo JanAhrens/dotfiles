@@ -56,6 +56,14 @@ git_wrapper() {
 
 alias git=git_wrapper
 
+if which boot2docker > /dev/null; then
+  if [[ $(boot2docker status) = "running" ]]; then
+    eval $(boot2docker shellinit 2>/dev/null)
+  else
+    echo "WARNING: boot2docker is not running. Not setting up the environment variables."
+  fi
+fi
+
 if since=$(outdated-backup 2>/dev/null); then
   echo "WARNING: You need to do a backup now!"
   echo "Your last backup is ${since} seconds old."
