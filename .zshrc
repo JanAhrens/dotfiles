@@ -78,3 +78,5 @@ up_since_days() {
 if output=$(up_since_days); then
   echo "WARNING: This machine is running since ${output} already"
 fi
+
+export EDITOR=emacsclient
