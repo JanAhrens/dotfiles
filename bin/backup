@@ -43,7 +43,6 @@ if since=$(backup_still_running); then
   notify info "Not starting another backup" "A previous backup job is still running (since ${since} seconds)."
   exit 1
 else
-  notify info "Starting backup" ""
   date +%s > "${lock_file}"
 fi
 
@@ -51,9 +50,6 @@ if $(do_backup); then
   start_time=$(cat "${lock_file}")
   end_time=$(date +%s)
   duration=$(echo "${end_time} - ${start_time}" | bc)
-
-  notify info "Backup finished" \
-    "Congrats. Another successful backup finished in ${duration} seconds. You have currently $(compressed_size) of compressed data stored."
 
   # see the `outdated-backup' script
   date +%s > "${last_backup}"
