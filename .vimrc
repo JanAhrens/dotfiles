@@ -86,7 +86,6 @@ set number
 
 "display tabs and trailing spaces
 set list
-set listchars=trail:⋅,nbsp:⋅,tab:>-
 
 " // gui --------------------------------------------------------------
 set clipboard+=unnamed
