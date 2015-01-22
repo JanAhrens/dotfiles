@@ -70,6 +70,9 @@ if since=$(outdated-backup 2>/dev/null); then
 fi
 
 up_since_days() {
+  if [[ $(uname -s) == "Darwin" ]]; then
+    return 1
+  fi
   uptime=$(uptime -p)
   # https://gitorious.org/procps/procps/source/3a66fba1e934cbd830df572d8d03c05b4f4a5f1e:proc/whattime.c#L78-84
   [[ $(echo "${uptime}" | grep day | cut -d' ' -f2) -gt 2 ]] && echo "${uptime}"
