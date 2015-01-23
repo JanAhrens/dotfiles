@@ -85,6 +85,6 @@ export EDITOR=emacsclient
 
 # OPAM configuration
 if [[ -d ~/.opam  ]]; then
-    eval `opam config env`
-    . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+  eval `opam config env`
+  . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
