@@ -28,6 +28,3 @@
 
 [push]
   default = tracking
-
-[diff]
-  tool = diffuse
