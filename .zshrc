@@ -34,8 +34,7 @@ source $ZSH/oh-my-zsh.sh
 # http://www.faqs.org/faqs/unix-faq/shell/zsh/#3.18
 setopt nohup
 
-# who needs a clock? keep on smiling! ;-)
-export RPROMPT=":-)"
+export RPROMPT='$(if [[ $? = 0 ]]; then echo "(ʘ‿ʘ)"; else; echo "(-_-)"; fi)'
 
 alias git="nocorrect git"
 
@@ -86,5 +85,6 @@ export EDITOR=emacsclient
 
 # OPAM configuration
 if [[ -d ~/.opam  ]]; then
+    eval `opam config env`
     . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
