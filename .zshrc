@@ -41,6 +41,7 @@ alias git="nocorrect git"
 alias be='bundle exec'
 alias bi='bundle install'
 alias ec='emacsclient'
+alias sudo='sudo ' # support alias in sudo
 
 alias ssh="ssh-add -l >/dev/null || ssh-add -t 10m; \ssh"
 alias xing="ssh-add -l >/dev/null || ssh-add -t 10m; \xing"
