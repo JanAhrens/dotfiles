@@ -89,3 +89,7 @@ if [[ -d ~/.opam  ]]; then
   eval `opam config env`
   . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
+
+if [[ -d ~/.nix-profile ]]; then
+. ~/.nix-profile/etc/profile.d/nix.sh
+fi
