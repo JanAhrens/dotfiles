@@ -36,6 +36,9 @@ setopt nohup
 
 export RPROMPT='$(if [[ $? = 0 ]]; then echo "(ʘ‿ʘ)"; else; echo "(-_-)"; fi)'
 
+CRUNCH_DIR_="${CRUNCH_DIR_COLOR} %3~\$(git_prompt_info) "
+export PROMPT="$CRUNCH_RVM_$CRUNCH_DIR_$CRUNCH_PROMPT%{$reset_color%}"
+
 alias git="nocorrect git"
 
 alias be='bundle exec'
