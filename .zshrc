@@ -34,8 +34,6 @@ source $ZSH/oh-my-zsh.sh
 # http://www.faqs.org/faqs/unix-faq/shell/zsh/#3.18
 setopt nohup
 
-export RPROMPT='$(if [[ $? = 0 ]]; then echo "(ʘ‿ʘ)"; else; echo "(-_-)"; fi)'
-
 CRUNCH_DIR_="${CRUNCH_DIR_COLOR} %3~\$(git_prompt_info) "
 export PROMPT="$CRUNCH_RVM_$CRUNCH_DIR_$CRUNCH_PROMPT%{$reset_color%}"
 
