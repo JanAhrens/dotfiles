@@ -95,3 +95,5 @@ fi
 if [[ -d ~/.nix-profile ]]; then
 . ~/.nix-profile/etc/profile.d/nix.sh
 fi
+
+export LC_ALL=en_US.UTF-8
