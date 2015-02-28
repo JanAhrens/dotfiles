@@ -4,10 +4,11 @@
 # ogg to safe some space.
 
 playlist="${1}"
-dest="${2}"
+dest_dir="${2}"
+new_playlist="${3}"
 
-if [[ -z "${playlist}" || -z "${dest}" ]]; then
-   echo "$0 playlist destination"
+if [[ -z "${playlist}" || -z "${dest_dir}" || -z "${new_playlist}" ]]; then
+   echo "$0 playlist dest_dir new_playlist"
    exit 1
 fi
 
@@ -16,7 +17,7 @@ IFS=$(echo -e "\n\b")
 for file in $(cat "${playlist}" | grep -v ^#); do
     hash=$(md5sum "$file" | awk '{print $1}')
     ext=$(echo "$file" | sed -e 's/^.*\.\(.*\)$/\1/')
-    newname="${dest}/$(printf "%04d" $counter)-${hash}"
+    newname="${dest_dir}/$(printf "%04d" $counter)-${hash}"
 
     echo "Copying \"${file}\" .."
     cp "$file" "${newname}.${ext}"
@@ -24,6 +25,9 @@ for file in $(cat "${playlist}" | grep -v ^#); do
     if [[ "${ext}" = "flac" ]]; then
         oggenc "${newname}.${ext}"
         rm -vf "${newname}.${ext}"
+        echo "${newname}.ogg" >> "${new_playlist}"
+    else
+        echo "${newname}.${ext}" >> "${new_playlist}"
     fi
 
     ((counter=$counter+1))
