@@ -8,6 +8,8 @@
 
 set -e
 
+source `dirname $0`/backup-shared.sh
+
 lock_file=~/.backup-lock
 last_backup=~/.last-backup # see the `outdated-backup' script
 
@@ -23,10 +25,6 @@ notify() {
 
 do_backup() {
   sudo /usr/local/bin/tarsnapper -c /root/.tarsnapper.conf make
-}
-
-compressed_size() {
-  sudo tarsnap --humanize-numbers --print-stats | grep 'unique data' | awk '{print $5 " " $6}'
 }
 
 backup_still_running() {
