@@ -19,8 +19,7 @@
   df = diff --stat
   br = branch -vv
   lg = log --graph --pretty=format:'%Cred%h%Creset %s%C(yellow)%d%Creset (%Cgreen%an%Creset, %cr)' --abbrev-commit --date=relative
-  l  = !git --no-pager lg -10
-  ll = !git --no-pager lg -30
+  l  = !git --no-pager lg -10 | emojify
   up = remote update --prune
   pu = pull --rebase
   su = !git submodule update
