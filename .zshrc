@@ -99,3 +99,18 @@ if [[ -d ~/.nix-profile ]]; then
 fi
 
 export LC_ALL=en_US.UTF-8
+
+if [[ -z $TMUX ]]; then
+  echo "WARNING: This shell is running outside of tmux."
+  sessions=`tmux list-sessions 2>/dev/null`
+  if [[ -z "$sessions" ]]; then
+    echo -n "tmux is not running. Should I start it (y/N): "
+    read YESNO
+    if [[ $YESNO = 'Y' || $YESNO = 'y' ]]; then
+      tmux new
+    fi
+  else
+    echo "These tmux sessions are running (use 'tmux attach'):"
+    echo "$sessions"
+  fi
+fi
