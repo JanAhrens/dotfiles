@@ -114,3 +114,6 @@ if [[ -z $TMUX ]]; then
     echo "$sessions"
   fi
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
