@@ -47,19 +47,6 @@ alias eg="emacsclient -t -e \"(magit-status \\\"\$PWD\\\" 'switch-to-buffer)\""
 alias gitocop="git diff --name-only --staged | grep '\.rb' | xargs bundle exec rubocop -D"
 alias sudo='sudo ' # support alias in sudo
 
-alias ssh="ssh-add -l >/dev/null || ssh-add -t 10m; \ssh"
-alias xing="ssh-add -l >/dev/null || ssh-add -t 10m; \xing"
-
-git_wrapper() {
-  if [[ "$1" = "push" || "$1" = "pull" || "$1" = "fetch" || "$1" = "clone" ]]; then
-    ssh-add -l >/dev/null || ssh-add -t 10m
-  fi
-
-  \git $@
-}
-
-alias git=git_wrapper
-
 if which boot2docker > /dev/null; then
   if [[ $(boot2docker status) = "running" ]]; then
     eval $(boot2docker shellinit 2>/dev/null)
@@ -114,6 +101,8 @@ if [[ -z $TMUX ]]; then
     echo "$sessions"
   fi
 fi
+
+source ~/.gnupg/gpg-agent-wrapper
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"

@@ -5,3 +5,11 @@
 .vim/bundle
 /.mutt/certificates
 *~
+*.key
+/.gnupg/random_seed
+/.gnupg/sshcontrol
+/.gnupg/*.gpg
+/.gnupg/*.kbx
+/.gnupg/*.log
+/.gnupg/*.status
+/.gnupg/.#*

@@ -1,1 +1,2 @@
 eval $(ssh-agent)
+source ${HOME}/.gnupg/gpg-agent-wrapper
