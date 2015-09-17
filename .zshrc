@@ -106,3 +106,5 @@ source ~/.gnupg/gpg-agent-wrapper
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
+
+export PASSWORD_STORE_CLIP_TIME=5
