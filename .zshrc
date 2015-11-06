@@ -94,7 +94,7 @@ if [[ -z $TMUX ]]; then
     echo -n "tmux is not running. Should I start it (y/N): "
     read YESNO
     if [[ $YESNO = 'Y' || $YESNO = 'y' ]]; then
-      tmux new
+      tmux new-session -s default
     fi
   else
     echo "These tmux sessions are running (use 'tmux attach'):"
