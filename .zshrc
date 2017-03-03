@@ -39,72 +39,20 @@ export PROMPT="$CRUNCH_RVM_$CRUNCH_DIR_$CRUNCH_PROMPT%{$reset_color%}"
 
 alias git="nocorrect git"
 
-alias be='bundle exec'
-alias bi='bundle install'
 alias ec='emacsclient -t'
 alias ep='emacsclient -t -e "(helm-projectile)"'
 alias eg="emacsclient -t -e \"(magit-status \\\"\$PWD\\\" 'switch-to-buffer)\""
-alias gitocop="git diff --name-only --staged | grep '\.rb' | xargs bundle exec rubocop -D"
 alias sudo='sudo ' # support alias in sudo
-
-if which boot2docker > /dev/null; then
-  if [[ $(boot2docker status) = "running" ]]; then
-    eval $(boot2docker shellinit 2>/dev/null)
-  else
-    echo "WARNING: boot2docker is not running. Not setting up the environment variables."
-  fi
-fi
 
 if since=$(outdated-backup 2>/dev/null); then
   echo "WARNING: You need to do a backup now!"
   echo "Your last backup is ${since} seconds old."
 fi
 
-up_since_days() {
-  if [[ $(uname -s) == "Darwin" ]]; then
-    return 1
-  fi
-  uptime=$(uptime -p)
-  # https://gitorious.org/procps/procps/source/3a66fba1e934cbd830df572d8d03c05b4f4a5f1e:proc/whattime.c#L78-84
-  [[ $(echo "${uptime}" | grep day | cut -d' ' -f2) -gt 2 ]] && echo "${uptime}"
-}
-
-if output=$(up_since_days); then
-  echo "WARNING: This machine is running since ${output} already"
-fi
-
-export EDITOR=emacsclient
-
-# OPAM configuration
-if [[ -d ~/.opam  ]]; then
-  eval `opam config env`
-  . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-fi
-
-if [[ -d ~/.nix-profile ]]; then
-. ~/.nix-profile/etc/profile.d/nix.sh
-fi
+export EDITOR=vim
 
 export LC_ALL=en_US.UTF-8
 
-if [[ -z $TMUX ]]; then
-  echo "WARNING: This shell is running outside of tmux."
-  sessions=`tmux list-sessions 2>/dev/null`
-  if [[ -z "$sessions" ]]; then
-    echo -n "tmux is not running. Should I start it (y/N): "
-    read YESNO
-    if [[ $YESNO = 'Y' || $YESNO = 'y' ]]; then
-      tmux new-session -s default
-    fi
-  else
-    echo "These tmux sessions are running (use 'tmux attach'):"
-    echo "$sessions"
-  fi
-fi
-
 source ~/.gnupg/gpg-agent-wrapper
-
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
 
 export PASSWORD_STORE_CLIP_TIME=5
