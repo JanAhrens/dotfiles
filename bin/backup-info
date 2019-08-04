@@ -1,8 +1,0 @@
-#!/bin/bash
-# Show some backup statistics
-
-set -e
-
-source `dirname $0`/backup-shared.sh
-
-echo "Currently storing $(compressed_size) of compressed data ($(price_per_month) USD/month)"
